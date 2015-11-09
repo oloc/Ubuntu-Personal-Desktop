@@ -1,0 +1,3 @@
+add-apt-repository ppa:videolan/stable-daily
+apt-get update
+apt-get install vlc vlc-plugin-notify vlc-plugin-samba
