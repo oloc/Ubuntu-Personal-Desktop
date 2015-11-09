@@ -1,0 +1,74 @@
+# updInstaller - Ubuntu Personal Desktop Installer
+#
+# 09/11/2015 - First version
+
+Name=$(basename $0)
+WrkDir=$(dirname $0)
+
+########################
+# Load the configuration
+echo "Loading configuration..."
+. ${WrkDir}/${Name}.lib 
+. ${WrkDir}/${Name}.cfg 
+
+###################
+# Start annoucement
+_log "${Name} - start."
+_log "Log is here: ${LogFile}"
+_log "Configuration is here: ${Name}.cfg"
+
+_echo "Update the repository..."
+apt-get update && apt-get upgrade -y
+
+_echo "Packages installation..."
+if [ -r ${WrkDir}/${PkgDir}/${PackageList} ] ; then
+	while read Package
+	do
+		if [ "$(echo ${Package} | cut -c1)" == '#' ] ; then
+			_log "$(echo ${Package} | cut -c2-)"
+		else
+			_echo "Installation of ${Package}..."
+			if [ $(echo ${Package} | wc -w) -eq 1 ] ; then
+				if [ -s ${WrkDir}/${InstDir}/${Package}.inst ] ; then
+					_log "${InstDir}/${Package}"
+					${WrkDir}/${InstDir}/${Package}.inst    2>&1 | tee -a ${LogFile}
+				else
+					apt-get install -y ${Package} 2>&1 | tee -a ${LogFile}
+				fi
+			else
+				apt-get install -y ${Package} 2>&1 | tee -a ${LogFile}
+			fi
+		fi
+	done < ${WrkDir}/${PkgDir}/${PackageList}
+fi
+
+_echo "Groups and users creation..."
+if [ "${Group}" != "$(grep ${Group} /etc/group | cut -d: -f 1)" ] ; then
+	addgroup ${Group} --system
+fi
+if [ "${User}" != "$(grep ${User} /etc/passwd | cut -d: -f 1)" ] ; then
+	useradd --create-home --groups ${Group},sudo --password $(mkpasswd -H md5 ${User}) --shell /bin/bash ${User}
+	echo "${User} ALL=(ALL:ALL) ALL" > /etc/sudoers.d/${Group}
+fi
+
+_echo "Directories creation..."
+_mkdir ${ComDir}
+
+_echo "Common installation..."
+_comInst ${AliasesList}
+_comInst ${GlobalsList}
+
+cat > $(grep ${User} /etc/passwd | cut -d ":" -f 6)/.bash_aliases <<EOF
+# Added by vpsInstaller
+if [ -f ${ComDir}/${AliasesList} ] ; then
+	. ${ComDir}/${AliasesList}
+fi
+if [ -f ${ComDir}/${GlobalsList} ] ; then
+	. ${ComDir}/${GlobalsList}
+fi
+EOF
+
+###################
+# End annoucement
+_echo "Your Personal Desktop is ready."
+_log "${Name} - end."

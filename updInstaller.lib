@@ -1,0 +1,30 @@
+# vpsInstaller - Virtual Private Server Installer
+# Functions Library
+#
+# 29/05/2014 - oloc - First version
+
+_comInst() {
+	typeset ComFile=$1
+	if [[ -n ${WrkDir}/${ComFile} && -s ${WrkDir}/${ComFile} ]] ; then
+		mv ${WrkDir}/${ComFile} ${ComDir}/
+		_log "Common: ${ComDir}/${ComFile}"
+	fi
+}
+
+_echo() {
+	echo "$(date +%Y%m%d-%H%M%S) - $1" | tee -a ${LogFile} 
+}
+
+_log() {
+	echo "$(date +%Y%m%d-%H%M%S) * $1" >> ${LogFile} 
+}
+
+_mkdir() {
+	typeset Dir=$1
+	if [ -d ${Dir} ] ; then
+		_log "${Dir} already exists."
+	else
+		mkdir -p ${Dir}
+		_log "Creation of ${Dir}"
+	fi
+}
