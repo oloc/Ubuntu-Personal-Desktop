@@ -18,6 +18,13 @@ _log "${Name} - start."
 _log "Log is here: ${LogFile}"
 _log "Configuration is here: ${Name}.cfg"
 
+_echo "Preparation of the installation..."
+ls -1 ${WrkDir}/${PreDir} | while read Preparation
+do
+	_echo "Preparation of ${Preparation}..."
+	${WrkDir}/${PreDir}/${Preparation} 2>&1 | tee -a ${LogFile}
+done
+
 _echo "Update the repository..."
 apt-get update && apt-get upgrade -y
 
