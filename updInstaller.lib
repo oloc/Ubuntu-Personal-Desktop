@@ -12,7 +12,8 @@ _comInst() {
 }
 
 _echo() {
-	echo "$(date +%Y%m%d-%H%M%S) - $1" | tee -a ${LogFile} 
+	echo -e "\033[32m$(date +%Y%m%d-%H%M%S) - $1 \033[0m"
+	echo "$(date +%Y%m%d-%H%M%S) - $1" >> ${LogFile} 
 }
 
 _log() {
