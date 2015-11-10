@@ -1,0 +1,5 @@
+echo 'Last version is here: http://www.yworks.com/en/downloads.html#yEd'
+wget --no-check-certificate http://www.yworks.com/products/yed/demo/yEd-3.14.4_64-bit_setup.sh -O /tmp/setup.sh
+chmod +x /tmp/setup.sh
+/tmp/setup.sh
+rm /tmp/setup.sh 2>/dev/null

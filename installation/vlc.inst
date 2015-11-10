@@ -1,0 +1,5 @@
+echo 'vlc installation...'
+echo 'Adding gpg key...'
+add-apt-repository ppa:videolan/stable-daily
+apt-get update 
+apt-get install -y vlc

@@ -1,0 +1,2 @@
+echo 'apt-get autoremove -y'
+apt-get autoremove -y

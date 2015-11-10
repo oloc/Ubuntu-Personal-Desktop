@@ -1,0 +1,3 @@
+echo 'Sublim text 2 installation...'
+wget --no-check-certificate http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2%20x64.tar.bz2 -O /opt/st.tar.bz2
+tar -xvf /opt/st.tar.bz2 && rm /opt/st.tar.bz2
