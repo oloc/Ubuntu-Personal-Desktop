@@ -1,0 +1,3 @@
+add-apt-repository ppa:ubuntu-wine/ppa -y
+wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -
+wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list

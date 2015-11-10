@@ -15,5 +15,6 @@ libreoffice
 gimp
 vlc
 indicator-multiload
-PlayOnLinux
+wine
+playonlinux
 autoremove
