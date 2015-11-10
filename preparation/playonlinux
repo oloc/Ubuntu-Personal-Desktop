@@ -1,3 +1,6 @@
 add-apt-repository ppa:ubuntu-wine/ppa -y
 wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -
-wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list
+
+LastCodename=$(curl -s http://deb.playonlinux.com/conf/distributions | sed -n -e '/Codename/,/Version/ p' | awk '((NR+1)%2){print $0" "p}{p=$0}' | grep 'Version: 1' | awk '{save=$4}END{print save}')
+
+wget http://deb.playonlinux.com/playonlinux_${LastCodename}.list -O /etc/apt/sources.list.d/playonlinux.list
