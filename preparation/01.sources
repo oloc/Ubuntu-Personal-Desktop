@@ -1,0 +1,10 @@
+SrcFile=/etc/apt/sources.list
+Codename=$(lsb_release -cs)
+
+cp ${SrcFile} ${SrcFile}.save
+
+echo "### Upd ###" > ${SrcFile}
+echo "deb http://fr.archive.ubuntu.com/ubuntu/ ${Codename} main restricted universe"         >> ${SrcFile}
+echo "deb http://fr.archive.ubuntu.com/ubuntu/ ${Codename}-updates main restricted universe" >> ${SrcFile}
+echo "deb http://security.ubuntu.com/ubuntu ${Codename}-security main restricted universe"   >> ${SrcFile}
+
