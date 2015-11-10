@@ -17,13 +17,13 @@ The retrieving is a wget instead of a git something because git is not installed
 Just copy/paste and launch the 2 lines below, and you will install the exact same configuration than mine.
 
     wget -r --no-check-certificate https://github.com/oloc/Ubuntu-Personal-Desktop/archive/master.tar.gz -O /tmp/master.tar.gz 
-    tar -xvf /tmp/master.tar.gz && /tmp/Ubuntu-Personal-Desktop-master/updInstaller
+    tar -xvf /tmp/master.tar.gz -C /tmp && /tmp/Ubuntu-Personal-Desktop-master/updInstaller
 
 #### If I were you
 I suggest to retrieve the stuff and tweak some parts.
 
     wget -r --no-check-certificate https://github.com/oloc/Ubuntu-Personal-Desktop/archive/master.tar.gz -O /tmp/master.tar.gz 
-    tar -xvf /tmp/master.tar.gz
+    tar -xvf /tmp/master.tar.gz -C /tmp
 
 Here you have to modify with your own choices the files:
 * updInstaller.cfg 
@@ -32,7 +32,7 @@ Here you have to modify with your own choices the files:
 * The target of the \<PackageList\> link in the \<PkgDir\>
 Then you launch the updInstaller and you can go take a mug of coffee in order to wait the job:
 
-     ./Ubuntu-Personal-Desktop-master/updInstaller
+     /tmp/Ubuntu-Personal-Desktop-master/updInstaller
 
 ## To know
 All the hardcasted definition are in the updInstaller.cfg. I mean the files name, the directories location, the group and the user.
