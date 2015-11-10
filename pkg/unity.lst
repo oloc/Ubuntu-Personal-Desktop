@@ -13,5 +13,6 @@ firefox thunderbird filezilla
 sublimtext2
 libreoffice
 gimp
-vlc vlc-plugin-notify vlc-plugin-samba
+vlc
+indicator-multiload
 PlayOnLinux
