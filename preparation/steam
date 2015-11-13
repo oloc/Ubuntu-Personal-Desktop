@@ -1,0 +1,3 @@
+SrcFile=/etc/apt/sources.list.d/steam.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B05498B7
+echo 'deb http://repo.steampowered.com/steam/ precise steam' > ${SrcFile}

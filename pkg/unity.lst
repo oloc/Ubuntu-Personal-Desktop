@@ -17,4 +17,5 @@ indicator-multiload
 mesa-utils
 wine
 playonlinux
+steam-launcher
 autoremove
