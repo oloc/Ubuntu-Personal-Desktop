@@ -9,14 +9,23 @@ WrkDir=$(dirname $0)
 ########################
 # Load the configuration
 echo "Loading configuration..."
-. ${WrkDir}/${Name}.lib 
-. ${WrkDir}/${Name}.cfg 
+. ${WrkDir}/${Name}.lib
+. ${WrkDir}/${Name}.cfg
+
 
 ###################
 # Start annoucement
 _log "${Name} - start."
 _log "Log is here: ${LogFile}"
 _log "Configuration is here: ${Name}.cfg"
+
+if [ $# == 1 ] ; then
+	PackageList=$1
+	if [ ! -s ${WrkDir}/${PkgDir}/${PackageList} ] ; then
+		_echo "${WrkDir}/${PkgDir}/${PackageList} not found"
+		exit 0
+	fi
+fi
 
 _echo "Preparation of the installation..."
 ls -1 ${WrkDir}/${PreDir} | while read Preparation

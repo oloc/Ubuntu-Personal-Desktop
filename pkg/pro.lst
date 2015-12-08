@@ -9,15 +9,10 @@ rvm
 virtualbox
 vagrant
 docker.io
-firefox thunderbird filezilla
+firefox
+filezilla
 flashplugin-installer
-sublimtext2
+sublime-text
 libreoffice
-gimp
-vlc
 indicator-multiload
-mesa-utils
-wine
-playonlinux
-steam-launcher
 autoremove
