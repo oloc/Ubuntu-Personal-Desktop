@@ -4,6 +4,7 @@ whois
 bash-completion
 git
 wget curl
+openssh-client clusterssh
 unzip
 rvm
 virtualbox
@@ -13,6 +14,8 @@ firefox
 filezilla
 flashplugin-installer
 sublime-text
+npm
 libreoffice
 indicator-multiload
 autoremove
+post_install

@@ -21,3 +21,4 @@ wine
 playonlinux
 steam-launcher
 autoremove
+post_install
