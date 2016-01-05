@@ -5,6 +5,7 @@ bash-completion
 git
 wget curl
 unzip
+jq
 rvm
 virtualbox
 vagrant
