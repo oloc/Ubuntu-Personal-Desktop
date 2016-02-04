@@ -2,7 +2,7 @@ sudo
 aptitude
 whois
 bash-completion
-git
+git tig
 wget curl
 openssh-client clusterssh
 unzip
