@@ -6,7 +6,7 @@
 _comInst() {
 	typeset ComFile=$1
 	if [[ -n ${WrkDir}/${ComFile} && -s ${WrkDir}/${ComFile} ]] ; then
-		mv ${WrkDir}/${ComFile} ${ComDir}/
+		cp ${WrkDir}/${ComFile} ${ComDir}/
 		_log "Common: ${ComDir}/${ComFile}"
 	fi
 }
