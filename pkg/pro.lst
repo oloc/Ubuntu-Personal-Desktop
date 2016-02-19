@@ -11,6 +11,7 @@ rvm
 virtualbox
 vagrant
 docker.io
+tshark wireshark nmap
 firefox
 filezilla
 flashplugin-installer
