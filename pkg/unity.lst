@@ -4,19 +4,19 @@ whois
 bash-completion
 git tig
 wget curl
+openssh-client
 unzip
-jq
+jq htop indicator-multiload
 rvm
 virtualbox
 vagrant
 docker.io
 firefox thunderbird filezilla
 flashplugin-installer
-sublimtext2
+sublime-text
 libreoffice
 gimp
 vlc
-indicator-multiload
 mesa-utils
 wine
 playonlinux

@@ -6,18 +6,16 @@ git tig
 wget curl
 openssh-client clusterssh
 unzip
-jq
+jq htop indicator-multiload
 rvm
 virtualbox
 vagrant
 docker.io
-tshark wireshark nmap
-firefox
-filezilla
+firefox thunderbird filezilla
 flashplugin-installer
 sublime-text
-npm
 libreoffice
-indicator-multiload
+npm
+tshark wireshark nmap
 autoremove
 post_install
