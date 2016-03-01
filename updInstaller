@@ -97,7 +97,7 @@ if [ -f ${ComDir}/${GlobalsList} ] ; then
 fi
 EOF
 
-cat > ${UserHome}/.bashrc <<EOF
+cat >> ${UserHome}/.bashrc <<EOF
 # Added by updInstaller
 if [ -d ${UserHome}/.bashrc.d ] ; then
 	for Bashrcd in $(ls ${UserHome}/.bashrc.d)
