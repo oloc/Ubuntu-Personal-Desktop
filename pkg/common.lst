@@ -10,7 +10,7 @@ jq htop indicator-multiload
 rvm
 virtualbox
 vagrant
-docker.io
+docker
 firefox thunderbird filezilla
 flashplugin-installer
 sublime-text
