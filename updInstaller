@@ -38,7 +38,7 @@ _echo "Update the repository..."
 apt-get update && apt-get upgrade -y
 
 _echo "Packages installation..."
-for List in common ${PackageList}
+for List in common.lst ${PackageList}
 do
 	if [ -r ${WrkDir}/${PkgDir}/${List} ] ; then
  		while read Package
@@ -50,7 +50,7 @@ do
 				if [ $(echo ${Package} | wc -w) -eq 1 ] ; then
 					if [ -s ${WrkDir}/${InstDir}/${Package}.inst ] ; then
 						_log "${InstDir}/${Package}"
-						${WrkDir}/${InstDir}/${Package}.inst    2>&1 | tee -a ${LogFile}
+						${WrkDir}/${InstDir}/${Package}.inst 2>&1 | tee -a ${LogFile}
 					else
 						apt-get install -y ${Package} 2>&1 | tee -a ${LogFile}
 					fi
@@ -61,6 +61,9 @@ do
 		done < ${WrkDir}/${PkgDir}/${List}
 	fi
 done
+
+_echo "apt-get autoremove -y"
+apt-get autoremove -y
 
 _echo "Groups and users creation..."
 if [ "${Group}" != "$(grep ${Group} /etc/group | cut -d: -f 1)" ] ; then
