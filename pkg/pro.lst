@@ -2,4 +2,3 @@ clusterssh
 npm
 tshark wireshark nmap
 autoremove
-post_install
