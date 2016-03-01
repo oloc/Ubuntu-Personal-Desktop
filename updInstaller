@@ -81,13 +81,29 @@ _echo "Common installation..."
 _comInst ${AliasesList}
 _comInst ${GlobalsList}
 
-cat > $(grep ${User} /etc/passwd | cut -d ":" -f 6)/.bash_aliases <<EOF
-# Added by vpsInstaller
+_echo "Personnal bash preferences..."
+UserHome=$(grep ${User} /etc/passwd | cut -d ":" -f 6)
+_mkdir ${UserHome}/.bashrc.d
+cp -r ${WrkDir}/bashrc.d/* ${UserHome}/.bashrc.d/
+chown -r ${User}:${User} ${UserHome}/.bashrc.d
+
+cat > ${UserHome}/.bash_aliases <<EOF
+# Added by updInstaller
 if [ -f ${ComDir}/${AliasesList} ] ; then
 	. ${ComDir}/${AliasesList}
 fi
 if [ -f ${ComDir}/${GlobalsList} ] ; then
 	. ${ComDir}/${GlobalsList}
+fi
+EOF
+
+cat > ${UserHome}/.bashrc <<EOF
+# Added by updInstaller
+if [ -d ${UserHome}/.bashrc.d ] ; then
+	for Bashrcd in $(ls ${UserHome}/.bashrc.d)
+	do
+		. ${UserHome}/.bashrc.d/${Bashrcd}
+	done
 fi
 EOF
 
