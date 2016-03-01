@@ -1,20 +1,4 @@
-sudo
-aptitude
-whois
-bash-completion
-git tig
-wget curl
-openssh-client clusterssh
-unzip
-jq htop indicator-multiload
-rvm
-virtualbox
-vagrant
-docker.io
-firefox thunderbird filezilla
-flashplugin-installer
-sublime-text
-libreoffice
+clusterssh
 npm
 tshark wireshark nmap
 autoremove

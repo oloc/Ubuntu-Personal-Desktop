@@ -1,20 +1,3 @@
-sudo
-aptitude
-whois
-bash-completion
-git tig
-wget curl
-openssh-client
-unzip
-jq htop indicator-multiload
-rvm
-virtualbox
-vagrant
-docker.io
-firefox thunderbird filezilla
-flashplugin-installer
-sublime-text
-libreoffice
 gimp
 vlc
 mesa-utils

@@ -38,26 +38,29 @@ _echo "Update the repository..."
 apt-get update && apt-get upgrade -y
 
 _echo "Packages installation..."
-if [ -r ${WrkDir}/${PkgDir}/${PackageList} ] ; then
-	while read Package
-	do
-		if [ "$(echo ${Package} | cut -c1)" == '#' ] ; then
-			_log "$(echo ${Package} | cut -c2-)"
-		else
-			_echo "Installation of ${Package}..."
-			if [ $(echo ${Package} | wc -w) -eq 1 ] ; then
-				if [ -s ${WrkDir}/${InstDir}/${Package}.inst ] ; then
-					_log "${InstDir}/${Package}"
-					${WrkDir}/${InstDir}/${Package}.inst    2>&1 | tee -a ${LogFile}
+for List in common ${PackageList}
+do
+	if [ -r ${WrkDir}/${PkgDir}/${List} ] ; then
+ 		while read Package
+		do
+			if [ "$(echo ${Package} | cut -c1)" == '#' ] ; then
+				_log "$(echo ${Package} | cut -c2-)"
+			else
+				_echo "Installation of ${Package}..."
+				if [ $(echo ${Package} | wc -w) -eq 1 ] ; then
+					if [ -s ${WrkDir}/${InstDir}/${Package}.inst ] ; then
+						_log "${InstDir}/${Package}"
+						${WrkDir}/${InstDir}/${Package}.inst    2>&1 | tee -a ${LogFile}
+					else
+						apt-get install -y ${Package} 2>&1 | tee -a ${LogFile}
+					fi
 				else
 					apt-get install -y ${Package} 2>&1 | tee -a ${LogFile}
 				fi
-			else
-				apt-get install -y ${Package} 2>&1 | tee -a ${LogFile}
 			fi
-		fi
-	done < ${WrkDir}/${PkgDir}/${PackageList}
-fi
+		done < ${WrkDir}/${PkgDir}/${List}
+	fi
+done
 
 _echo "Groups and users creation..."
 if [ "${Group}" != "$(grep ${Group} /etc/group | cut -d: -f 1)" ] ; then
