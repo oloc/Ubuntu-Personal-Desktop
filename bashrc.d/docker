@@ -1,8 +1,14 @@
 dock-clean() {
-	docker-rm
+	dock-rm-all
 	docker rmi $(docker images | tail -n +2 | awk '{print $3}')
 }
 
 dock-rm() {
+	Id=$1
+	docker stop ${Id} 2>/dev/null
+	docker rm $(docker inspect ${Id} | jq '.[].Id' | sed -e 's/"//g') 2>/dev/null
+}
+
+dock-rm-all() {
 	docker rm $(docker ps -a | tail -n +2 | awk '{print $1}')
 }
