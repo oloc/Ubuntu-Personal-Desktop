@@ -1,6 +1,19 @@
 odoo() {
-	dock-rm db
-	dock-rm odoo
-	docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db -v /var/local/postgresql/data:/var/lib/postgresql/data postgres
-	docker run -d -p 8069:8069 --name odoo --link db:db -v /var/local/odoo:/var/lib/odoo odoo
+  case $1 in
+  start)
+    dock-rm db
+    dock-rm odoo
+    docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db -v /var/local/postgresql/data:/var/lib/postgresql/data postgres
+    docker run -d -p 8069:8069 --name odoo --link db:db -v /var/local/odoo:/var/lib/odoo odoo
+  ;;
+  stop)
+    docker stop odoo db
+  ;;
+  status)
+    docker ps | egrep "odoo|db"
+  ;;
+  *)
+    echo "Usage: odoo < start | stop | status >"
+  ;;
+  esac
 }
