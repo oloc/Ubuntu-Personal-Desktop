@@ -6,7 +6,7 @@ git tig
 wget curl
 openssh-client
 unzip
-jq htop indicator-multiload
+jq htop tree indicator-multiload
 rvm
 virtualbox
 vagrant
