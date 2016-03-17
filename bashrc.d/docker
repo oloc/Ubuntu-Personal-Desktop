@@ -1,6 +1,6 @@
 dock-clean() {
 	dock-rm-all
-	docker rmi $(docker images | tail -n +2 | awk '{print $3}')
+	docker rmi $(docker images -q)
 }
 
 dock-rm() {
@@ -10,5 +10,5 @@ dock-rm() {
 }
 
 dock-rm-all() {
-	docker rm $(docker ps -a | tail -n +2 | awk '{print $1}')
+	docker rm $(docker ps -aq)
 }
