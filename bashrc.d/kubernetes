@@ -13,7 +13,6 @@ k8s() {
     --net=host \
     --pid=host \
     --privileged=true \
-    --name=k8s_kubelet.$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c8)_k8s-master \
     -d \
     gcr.io/google_containers/hyperkube-amd64:v${K8S_VERSION} \
     /hyperkube kubelet \
@@ -31,7 +30,7 @@ k8s() {
     docker kill $(docker ps -aq) 2>/dev/null
   ;;
   status)
-    docker ps | egrep "k8s_|_k8s-"
+    docker ps | egrep "k8s_|_k8s-|kubelet"
   ;;
   *)
     echo "Usage: k8s < start | stop | status >"
