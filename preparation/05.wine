@@ -1,0 +1,7 @@
+# https://wiki.winehq.org/Ubuntu
+
+# If your system is 64 bit, enable 32 bit architecture (if you haven't already): 
+dpkg --add-architecture i386 
+
+# Add the repository: 
+add-apt-repository ppa:wine/wine-builds
