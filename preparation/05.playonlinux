@@ -6,5 +6,3 @@ LastCodename=$(curl -s http://deb.playonlinux.com/conf/distributions | \
   awk '{p=value}{value=$2}END{print p}')
 
 wget http://deb.playonlinux.com/playonlinux_${LastCodename}.list -O /etc/apt/sources.list.d/playonlinux.list
-
-apt-get install -y playonlinux
