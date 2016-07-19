@@ -1,4 +1,8 @@
 dock-clean() {
+        docker rmi $(docker images | awk '{if ($1 == "<none>") {print $3}}')
+}
+
+dock-rmi-all() {
 	dock-rm-all
 	docker rmi $(docker images -q)
 }
